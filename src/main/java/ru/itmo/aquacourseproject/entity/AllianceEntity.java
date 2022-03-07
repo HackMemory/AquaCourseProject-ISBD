@@ -51,6 +51,7 @@ public class AllianceEntity {
 
     @Basic
     @Column(name = "alliance_type")
+    @Enumerated(EnumType.STRING)
     public AllianceTypeEnum getAllianceType() {
         return allianceType;
     }

@@ -1,7 +1,6 @@
 package ru.itmo.aquacourseproject.entity;
 
 import javax.persistence.*;
-import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -9,9 +8,9 @@ import java.util.Objects;
 @Table(name = "location", schema = "s289136", catalog = "studs")
 public class LocationEntity {
     private int id;
-    private BigInteger x;
-    private BigInteger y;
-    private BigInteger z;
+    private Double x;
+    private Double y;
+    private Double z;
     private Collection<DuelEntity> duelsById;
     private Collection<KingdomEntity> kingdomsById;
     private Collection<WarEntity> warsById;
@@ -28,31 +27,31 @@ public class LocationEntity {
 
     @Basic
     @Column(name = "x")
-    public BigInteger getX() {
+    public Double getX() {
         return x;
     }
 
-    public void setX(BigInteger x) {
+    public void setX(Double x) {
         this.x = x;
     }
 
     @Basic
     @Column(name = "y")
-    public BigInteger getY() {
+    public Double getY() {
         return y;
     }
 
-    public void setY(BigInteger y) {
+    public void setY(Double y) {
         this.y = y;
     }
 
     @Basic
     @Column(name = "z")
-    public BigInteger getZ() {
+    public Double getZ() {
         return z;
     }
 
-    public void setZ(BigInteger z) {
+    public void setZ(Double z) {
         this.z = z;
     }
 

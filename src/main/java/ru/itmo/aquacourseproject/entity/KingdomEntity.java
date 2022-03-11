@@ -50,6 +50,7 @@ public class KingdomEntity {
 
     @Basic
     @Column(name = "category")
+    @Enumerated(EnumType.STRING)
     public CategoryEnum getCategory() {
         return category;
     }

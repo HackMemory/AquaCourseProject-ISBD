@@ -6,9 +6,8 @@ import java.io.Serializable;
 
 @Data
 public class WeaponEntityDto implements Serializable {
-    private final Boolean isEnchanted;
     private final int id;
+    private final Boolean isEnchanted;
     private final int strength;
-    private final Boolean enchanted;
-    private final Integer abilityId;
+    private final int abilityId;
 }

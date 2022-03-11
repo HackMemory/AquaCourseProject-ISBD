@@ -2,9 +2,8 @@ package ru.itmo.aquacourseproject;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.itmo.aquacourseproject.DTOmodel.AbilityEntityDto;
-import ru.itmo.aquacourseproject.entity.AbilityEntity;
-import ru.itmo.aquacourseproject.entity.WarEntity;
+import ru.itmo.aquacourseproject.DTOmodel.*;
+import ru.itmo.aquacourseproject.entity.*;
 import ru.itmo.aquacourseproject.service.*;
 
 import java.util.List;
@@ -42,4 +41,52 @@ public class MainController {
     public List<AbilityEntityDto> getAbilities() {
         return mapService.getAbilities();
     }
+
+    @GetMapping("/alliances")
+    public List<AllianceEntityDto> getAlliances() {
+        return mapService.getAlliances();
+    }
+
+    @GetMapping("/characters")
+    public List<CharacterEntityDto> getCharacters() {
+        return mapService.getCharacters();
+    }
+
+    @GetMapping("/duel-results")
+    public List<DuelResultEntityDto> getDuelResults() {
+        return mapService.getDuelResults();
+    }
+
+    @GetMapping("/duels")
+    public List<DuelEntityDto> getDuels() {
+        return mapService.getDuels();
+    }
+
+    @GetMapping("/kingdoms")
+    public List<KingdomEntityDto> getKingdoms() {
+        return mapService.getKingdoms();
+    }
+
+    @GetMapping("/locations")
+    public List<LocationEntityDto> getLocations() {
+        return mapService.getLocations();
+    }
+
+    @GetMapping("/war-results")
+    public List<WarResultEntityDto> getWarResults() {
+        return mapService.getWarResults();
+    }
+
+    @GetMapping("/wars")
+    public List<WarEntityDto> getWars() {
+        return mapService.getWars();
+    }
+
+    @GetMapping("/weapons")
+    public List<WeaponEntityDto> getWeapons() {
+        return mapService.getWeapons();
+    }
+
+
+
 }

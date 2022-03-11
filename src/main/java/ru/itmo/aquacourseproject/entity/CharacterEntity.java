@@ -21,6 +21,7 @@ public class CharacterEntity {
     private Collection<KingdomEntity> kingdomsById;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     public int getId() {
         return id;

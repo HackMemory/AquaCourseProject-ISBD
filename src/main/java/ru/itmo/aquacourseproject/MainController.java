@@ -1,6 +1,8 @@
 package ru.itmo.aquacourseproject;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.itmo.aquacourseproject.DTOmodel.*;
 import ru.itmo.aquacourseproject.entity.*;
@@ -87,6 +89,17 @@ public class MainController {
         return mapService.getWeapons();
     }
 
+    @PostMapping("/abilities/add")
+    public ResponseDTO addAbilities(@RequestBody AbilityEntityDto abilityEntityDto){
+        try{
+            AbilityEntity ability = new AbilityEntity();
+            ability.setDescription(abilityEntityDto.getDescription());
+            ability.setPower(abilityEntityDto.getPower());
 
+            return new ResponseDTO(true, mapService.convertToAbilityDTO(abilityService.save(ability)));
+        }catch (Exception e){
+            return new ResponseDTO(false, e.getMessage());
+        }
+    }
 
 }

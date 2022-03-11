@@ -43,7 +43,7 @@ public class MapService {
                 .collect(Collectors.toList());
     }
 
-    private AbilityEntityDto convertToAbilityDTO(AbilityEntity ability){
+   public AbilityEntityDto convertToAbilityDTO(AbilityEntity ability){
         return new AbilityEntityDto(ability.getId(), ability.getDescription(), ability.getPower());
     }
 
@@ -55,7 +55,7 @@ public class MapService {
                 .collect(Collectors.toList());
     }
 
-    private AllianceEntityDto convertAllianceDTO(AllianceEntity alliance){
+   public AllianceEntityDto convertAllianceDTO(AllianceEntity alliance){
         return new AllianceEntityDto(alliance.getId(), alliance.getAllianceName(), alliance.getAllianceAge(), alliance.getAllianceType());
     }
 
@@ -67,7 +67,7 @@ public class MapService {
                 .collect(Collectors.toList());
     }
 
-    private CharacterEntityDto convertCharacterDTO(CharacterEntity character){
+   public CharacterEntityDto convertCharacterDTO(CharacterEntity character){
         return new CharacterEntityDto(character.getId(), character.getName(), character.getSurname(), character.getAge(), character.getWeaponId(), character.getAllianceId());
     }
 
@@ -79,7 +79,7 @@ public class MapService {
                 .collect(Collectors.toList());
     }
 
-    private DuelResultEntityDto convertDuelResultDTO(DuelResultEntity duelResult){
+   public DuelResultEntityDto convertDuelResultDTO(DuelResultEntity duelResult){
         return new DuelResultEntityDto(duelResult.getId(), duelResult.getDuelId(), duelResult.getWinCharId());
     }
 
@@ -91,7 +91,7 @@ public class MapService {
                 .collect(Collectors.toList());
     }
 
-    private DuelEntityDto convertDuelDTO(DuelEntity duel){
+   public DuelEntityDto convertDuelDTO(DuelEntity duel){
         return new DuelEntityDto(duel.getId(), duel.getAttackCharId(), duel.getAttackCharId(), duel.getLocationId(), duel.getTime());
     }
 
@@ -103,7 +103,7 @@ public class MapService {
                 .collect(Collectors.toList());
     }
 
-    private KingdomEntityDto convertKingdomDTO(KingdomEntity kingdom){
+   public KingdomEntityDto convertKingdomDTO(KingdomEntity kingdom){
         return new KingdomEntityDto(kingdom.getId(), kingdom.getCharacterId(), kingdom.getArmyStrength(), kingdom.getCategory(), kingdom.getLocationId(), kingdom.getAllianceId());
     }
 
@@ -115,7 +115,7 @@ public class MapService {
                 .collect(Collectors.toList());
     }
 
-    private LocationEntityDto convertLocationDTO(LocationEntity location){
+   public LocationEntityDto convertLocationDTO(LocationEntity location){
         return new LocationEntityDto(location.getId(), location.getX(), location.getY(), location.getZ());
     }
 
@@ -127,7 +127,7 @@ public class MapService {
                 .collect(Collectors.toList());
     }
 
-    private WarResultEntityDto convertWarResultDTO(WarResultEntity warResult){
+   public WarResultEntityDto convertWarResultDTO(WarResultEntity warResult){
         return new WarResultEntityDto(warResult.getId(), warResult.getWarId(), warResult.getWinAllianceId());
     }
 
@@ -139,7 +139,7 @@ public class MapService {
                 .collect(Collectors.toList());
     }
 
-    private WarEntityDto convertWarDTO(WarEntity war){
+   public WarEntityDto convertWarDTO(WarEntity war){
         return new WarEntityDto(war.getId(), war.getAttackAllId(), war.getDefeatAllId(), war.getLocationId(), war.getTime());
     }
 
@@ -151,7 +151,7 @@ public class MapService {
                 .collect(Collectors.toList());
     }
 
-    private WeaponEntityDto convertWeaponDTO(WeaponEntity weapon){
+    public WeaponEntityDto convertWeaponDTO(WeaponEntity weapon){
         return new WeaponEntityDto(weapon.getId(), weapon.getEnchanted(), weapon.getStrength(), weapon.getAbilityId());
     }
 }

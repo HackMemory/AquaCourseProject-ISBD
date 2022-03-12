@@ -20,7 +20,7 @@ public class DuelService {
         return (List<DuelEntity>) repository.findAll();
     }
 
-    public Optional<DuelEntity> findById(Long id){
+    public Optional<DuelEntity> findById(Integer id){
         return repository.findById(id);
     }
 

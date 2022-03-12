@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.itmo.aquacourseproject.entity.DuelEntity;
 
 @Repository
-public interface DuelEntityRepository extends CrudRepository<DuelEntity, Long> {
+public interface DuelEntityRepository extends CrudRepository<DuelEntity, Integer> {
 }

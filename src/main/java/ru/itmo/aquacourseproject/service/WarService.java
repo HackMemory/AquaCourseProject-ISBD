@@ -19,7 +19,7 @@ public class WarService {
         return (List<WarEntity>) repository.findAll();
     }
 
-    public Optional<WarEntity> findById(Long id){
+    public Optional<WarEntity> findById(Integer id){
         return repository.findById(id);
     }
 

@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.itmo.aquacourseproject.entity.LocationEntity;
 
 @Repository
-public interface LocationEntityRepository extends CrudRepository<LocationEntity, Long> {
+public interface LocationEntityRepository extends CrudRepository<LocationEntity, Integer> {
 }

@@ -1,14 +1,12 @@
 package ru.itmo.aquacourseproject;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.itmo.aquacourseproject.DTOmodel.*;
 import ru.itmo.aquacourseproject.entity.*;
 import ru.itmo.aquacourseproject.service.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class MainController {
@@ -39,57 +37,67 @@ public class MainController {
         this.weaponService = weaponService;
     }
 
-    @GetMapping("/abilities")
+    @GetMapping("/get/abilities")
     public List<AbilityEntityDto> getAbilities() {
         return mapService.getAbilities();
     }
 
-    @GetMapping("/alliances")
+    @GetMapping("/get/abilities/{id}")
+    public Object getAbilitiesById(@PathVariable("id") int id) {
+        Optional<AbilityEntity> entity = abilityService.findById(id);
+        if(entity.isPresent()) {
+            return mapService.convertToAbilityDTO(entity.get());
+        }
+
+        return new ResponseDTO(false, "Not found");
+    }
+
+    @GetMapping("/get/alliances")
     public List<AllianceEntityDto> getAlliances() {
         return mapService.getAlliances();
     }
 
-    @GetMapping("/characters")
+    @GetMapping("/get/characters")
     public List<CharacterEntityDto> getCharacters() {
         return mapService.getCharacters();
     }
 
-    @GetMapping("/duel-results")
+    @GetMapping("/get/duel-results")
     public List<DuelResultEntityDto> getDuelResults() {
         return mapService.getDuelResults();
     }
 
-    @GetMapping("/duels")
+    @GetMapping("/get/duels")
     public List<DuelEntityDto> getDuels() {
         return mapService.getDuels();
     }
 
-    @GetMapping("/kingdoms")
+    @GetMapping("/get/kingdoms")
     public List<KingdomEntityDto> getKingdoms() {
         return mapService.getKingdoms();
     }
 
-    @GetMapping("/locations")
+    @GetMapping("/get/locations")
     public List<LocationEntityDto> getLocations() {
         return mapService.getLocations();
     }
 
-    @GetMapping("/war-results")
+    @GetMapping("/get/war-results")
     public List<WarResultEntityDto> getWarResults() {
         return mapService.getWarResults();
     }
 
-    @GetMapping("/wars")
+    @GetMapping("/get/wars")
     public List<WarEntityDto> getWars() {
         return mapService.getWars();
     }
 
-    @GetMapping("/weapons")
+    @GetMapping("/get/weapons")
     public List<WeaponEntityDto> getWeapons() {
         return mapService.getWeapons();
     }
 
-    @PostMapping("/abilities/add")
+    @PostMapping("/add/abilities")
     public ResponseDTO addAbilities(@RequestBody AbilityEntityDto abilityEntityDto){
         try{
             AbilityEntity ability = new AbilityEntity();

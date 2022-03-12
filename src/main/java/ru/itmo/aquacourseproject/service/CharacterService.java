@@ -20,7 +20,7 @@ public class CharacterService {
         return (List<CharacterEntity>) repository.findAll();
     }
 
-    public Optional<CharacterEntity> findById(Long id){
+    public Optional<CharacterEntity> findById(Integer id){
         return repository.findById(id);
     }
 

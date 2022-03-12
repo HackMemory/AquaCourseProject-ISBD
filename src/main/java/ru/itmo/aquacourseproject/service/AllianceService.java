@@ -20,7 +20,7 @@ public class AllianceService {
         return (List<AllianceEntity>) repository.findAll();
     }
 
-    public Optional<AllianceEntity> findById(Long id){
+    public Optional<AllianceEntity> findById(Integer id){
         return repository.findById(id);
     }
 

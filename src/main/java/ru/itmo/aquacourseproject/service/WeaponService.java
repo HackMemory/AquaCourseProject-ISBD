@@ -20,7 +20,7 @@ public class WeaponService {
         return (List<WeaponEntity>) repository.findAll();
     }
 
-    public Optional<WeaponEntity> findById(Long id){
+    public Optional<WeaponEntity> findById(Integer id){
         return repository.findById(id);
     }
 

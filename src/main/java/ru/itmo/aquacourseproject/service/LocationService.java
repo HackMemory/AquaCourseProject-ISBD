@@ -20,7 +20,7 @@ public class LocationService {
         return (List<LocationEntity>) repository.findAll();
     }
 
-    public Optional<LocationEntity> findById(Long id){
+    public Optional<LocationEntity> findById(Integer id){
         return repository.findById(id);
     }
 

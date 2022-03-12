@@ -21,7 +21,7 @@ public class AbilityService {
         return (List<AbilityEntity>) repository.findAll();
     }
 
-    public Optional<AbilityEntity> findById(Long id){
+    public Optional<AbilityEntity> findById(Integer id){
         return repository.findById(id);
     }
 

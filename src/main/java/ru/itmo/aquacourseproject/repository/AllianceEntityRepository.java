@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import ru.itmo.aquacourseproject.entity.AllianceEntity;
 
 @Repository
-public interface AllianceEntityRepository extends CrudRepository<AllianceEntity, Long> {
+public interface AllianceEntityRepository extends CrudRepository<AllianceEntity, Integer> {
 }

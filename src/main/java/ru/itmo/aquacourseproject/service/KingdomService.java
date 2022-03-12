@@ -21,7 +21,7 @@ public class KingdomService {
         return (List<KingdomEntity>) repository.findAll();
     }
 
-    public Optional<KingdomEntity> findById(Long id){
+    public Optional<KingdomEntity> findById(Integer id){
         return repository.findById(id);
     }
 

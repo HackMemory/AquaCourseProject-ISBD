@@ -26,7 +26,8 @@ public class KingdomEntity {
     private AllianceEntity allianceByAllianceId;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "kingdom_id_seq")
+    @SequenceGenerator(name = "kingdom_id_seq", sequenceName = "kingdom_id_seq")
     @Column(name = "id")
     public int getId() {
         return id;

@@ -21,7 +21,8 @@ public class CharacterEntity {
     private Collection<KingdomEntity> kingdomsById;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "character_id_seq")
+    @SequenceGenerator(name = "character_id_seq", sequenceName = "character_id_seq")
     @Column(name = "id")
     public int getId() {
         return id;

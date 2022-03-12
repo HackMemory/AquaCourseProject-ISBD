@@ -13,7 +13,8 @@ public class WarResultEntity {
     private AllianceEntity allianceByWinAllianceId;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "war_result_seq")
+    @SequenceGenerator(name = "war_result_seq", sequenceName = "war_result_seq")
     @Column(name = "id")
     public int getId() {
         return id;

@@ -19,7 +19,8 @@ public class DuelEntity {
     private Collection<DuelResultEntity> duelResultsById;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "duel_id_seq")
+    @SequenceGenerator(name = "duel_id_seq", sequenceName = "duel_id_seq")
     @Column(name = "id")
     public int getId() {
         return id;

@@ -19,7 +19,8 @@ public class WarEntity {
     private Collection<WarResultEntity> warResultsById;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "war_id_seq")
+    @SequenceGenerator(name = "war_id_seq", sequenceName = "war_id_seq")
     @Column(name = "id")
     public int getId() {
         return id;

@@ -13,7 +13,8 @@ public class DuelResultEntity {
     private CharacterEntity characterByWinCharId;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "duel_result_id_seq")
+    @SequenceGenerator(name = "duel_result_id_seq", sequenceName = "duel_result_id_seq")
     @Column(name = "id")
     public int getId() {
         return id;

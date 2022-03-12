@@ -16,7 +16,8 @@ public class LocationEntity {
     private Collection<WarEntity> warsById;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "location_id_seq")
+    @SequenceGenerator(name = "location_id_seq", sequenceName = "location_id_seq")
     @Column(name = "id")
     public int getId() {
         return id;

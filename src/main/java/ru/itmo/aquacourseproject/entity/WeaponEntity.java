@@ -15,7 +15,8 @@ public class WeaponEntity {
     private AbilityEntity abilityByAbilityId;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "weapon_seq")
+    @SequenceGenerator(name = "weapon_seq", sequenceName = "weapon_seq")
     @Column(name = "id")
     public int getId() {
         return id;

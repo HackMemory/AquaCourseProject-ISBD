@@ -1,12 +1,19 @@
 package ru.itmo.aquacourseproject.entity;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 import ru.itmo.aquacourseproject.enums.AllianceTypeEnum;
+import ru.itmo.aquacourseproject.enums.PostgreSQLEnumType;
 
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
+@TypeDef(
+        name = "pgsql_enum",
+        typeClass = PostgreSQLEnumType.class
+)
 @Table(name = "alliance", schema = "s289136", catalog = "studs")
 public class AllianceEntity {
     private int id;
@@ -53,6 +60,7 @@ public class AllianceEntity {
     @Basic
     @Column(name = "alliance_type")
     @Enumerated(EnumType.STRING)
+    @Type( type = "pgsql_enum" )
     public AllianceTypeEnum getAllianceType() {
         return allianceType;
     }

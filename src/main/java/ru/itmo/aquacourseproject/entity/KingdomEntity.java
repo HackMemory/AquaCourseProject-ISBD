@@ -1,11 +1,18 @@
 package ru.itmo.aquacourseproject.entity;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
 import ru.itmo.aquacourseproject.enums.CategoryEnum;
+import ru.itmo.aquacourseproject.enums.PostgreSQLEnumType;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
+@TypeDef(
+        name = "pgsql_enum",
+        typeClass = PostgreSQLEnumType.class
+)
 @Table(name = "kingdom", schema = "s289136", catalog = "studs")
 public class KingdomEntity {
     private int id;
@@ -52,6 +59,7 @@ public class KingdomEntity {
     @Basic
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
+    @Type( type = "pgsql_enum" )
     public CategoryEnum getCategory() {
         return category;
     }

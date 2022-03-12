@@ -14,7 +14,7 @@ public class AbilityEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ability_id_seq")
-    @SequenceGenerator(name = "ability_id_seq", sequenceName = "ability_id_seq")
+    @SequenceGenerator(name = "ability_id_seq", sequenceName = "ability_id_seq", allocationSize = 1)
     @Column(name = "id")
     public int getId() {
         return id;

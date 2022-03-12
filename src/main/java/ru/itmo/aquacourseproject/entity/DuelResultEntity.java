@@ -14,7 +14,7 @@ public class DuelResultEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "duel_result_id_seq")
-    @SequenceGenerator(name = "duel_result_id_seq", sequenceName = "duel_result_id_seq")
+    @SequenceGenerator(name = "duel_result_id_seq", sequenceName = "duel_result_id_seq", allocationSize = 1)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -25,7 +25,7 @@ public class DuelResultEntity {
     }
 
     @Basic
-    @Column(name = "duel_id", insertable = false, updatable = false)
+    @Column(name = "duel_id")
     public int getDuelId() {
         return duelId;
     }
@@ -35,7 +35,7 @@ public class DuelResultEntity {
     }
 
     @Basic
-    @Column(name = "win_char_id", insertable = false, updatable = false)
+    @Column(name = "win_char_id")
     public int getWinCharId() {
         return winCharId;
     }
@@ -58,7 +58,7 @@ public class DuelResultEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "duel_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "duel_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     public DuelEntity getDuelByDuelId() {
         return duelByDuelId;
     }
@@ -68,7 +68,7 @@ public class DuelResultEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "win_char_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "win_char_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     public CharacterEntity getCharacterByWinCharId() {
         return characterByWinCharId;
     }

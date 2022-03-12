@@ -22,7 +22,7 @@ public class CharacterEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "character_id_seq")
-    @SequenceGenerator(name = "character_id_seq", sequenceName = "character_id_seq")
+    @SequenceGenerator(name = "character_id_seq", sequenceName = "character_id_seq", allocationSize = 1)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -63,7 +63,7 @@ public class CharacterEntity {
     }
 
     @Basic
-    @Column(name = "weapon_id", insertable = false, updatable = false)
+    @Column(name = "weapon_id")
     public Integer getWeaponId() {
         return weaponId;
     }
@@ -73,7 +73,7 @@ public class CharacterEntity {
     }
 
     @Basic
-    @Column(name = "alliance_id", insertable = false, updatable = false)
+    @Column(name = "alliance_id")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -96,7 +96,7 @@ public class CharacterEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "weapon_id", referencedColumnName = "id")
+    @JoinColumn(name = "weapon_id", referencedColumnName = "id", insertable=false, updatable=false)
     public WeaponEntity getWeaponByWeaponId() {
         return weaponByWeaponId;
     }
@@ -106,7 +106,7 @@ public class CharacterEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "alliance_id", referencedColumnName = "id")
+    @JoinColumn(name = "alliance_id", referencedColumnName = "id", insertable=false, updatable=false)
     public AllianceEntity getAllianceByAllianceId() {
         return allianceByAllianceId;
     }

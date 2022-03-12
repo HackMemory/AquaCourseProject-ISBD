@@ -14,7 +14,7 @@ public class WarResultEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "war_result_id_seq")
-    @SequenceGenerator(name = "war_result_id_seq", sequenceName = "war_result_id_seq")
+    @SequenceGenerator(name = "war_result_id_seq", sequenceName = "war_result_id_seq", allocationSize = 1)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -25,7 +25,7 @@ public class WarResultEntity {
     }
 
     @Basic
-    @Column(name = "war_id", insertable = false, updatable = false)
+    @Column(name = "war_id")
     public int getWarId() {
         return warId;
     }
@@ -35,7 +35,7 @@ public class WarResultEntity {
     }
 
     @Basic
-    @Column(name = "win_alliance_id", insertable = false, updatable = false)
+    @Column(name = "win_alliance_id")
     public int getWinAllianceId() {
         return winAllianceId;
     }
@@ -58,7 +58,7 @@ public class WarResultEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "war_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "war_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     public WarEntity getWarByWarId() {
         return warByWarId;
     }
@@ -68,7 +68,7 @@ public class WarResultEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "win_alliance_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "win_alliance_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     public AllianceEntity getAllianceByWinAllianceId() {
         return allianceByWinAllianceId;
     }

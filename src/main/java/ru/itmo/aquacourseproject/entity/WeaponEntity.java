@@ -16,7 +16,7 @@ public class WeaponEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "weapon_id_seq")
-    @SequenceGenerator(name = "weapon_id_seq", sequenceName = "weapon_id_seq")
+    @SequenceGenerator(name = "weapon_id_seq", sequenceName = "weapon_id_seq", allocationSize = 1)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -47,7 +47,7 @@ public class WeaponEntity {
     }
 
     @Basic
-    @Column(name = "ability_id", insertable = false, updatable = false)
+    @Column(name = "ability_id")
     public Integer getAbilityId() {
         return abilityId;
     }
@@ -79,7 +79,7 @@ public class WeaponEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ability_id", referencedColumnName = "id")
+    @JoinColumn(name = "ability_id", referencedColumnName = "id", insertable=false, updatable=false)
     public AbilityEntity getAbilityByAbilityId() {
         return abilityByAbilityId;
     }

@@ -28,7 +28,7 @@ public class AllianceEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "alliance_id_seq")
-    @SequenceGenerator(name = "alliance_id_seq", sequenceName = "alliance_id_seq")
+    @SequenceGenerator(name = "alliance_id_seq", sequenceName = "alliance_id_seq", allocationSize = 1)
     @Column(name = "id")
     public int getId() {
         return id;

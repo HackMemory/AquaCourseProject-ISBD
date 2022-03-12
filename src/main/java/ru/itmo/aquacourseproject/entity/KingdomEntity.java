@@ -27,7 +27,7 @@ public class KingdomEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "kingdom_id_seq")
-    @SequenceGenerator(name = "kingdom_id_seq", sequenceName = "kingdom_id_seq")
+    @SequenceGenerator(name = "kingdom_id_seq", sequenceName = "kingdom_id_seq", allocationSize = 1)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -38,7 +38,7 @@ public class KingdomEntity {
     }
 
     @Basic
-    @Column(name = "character_id", insertable = false, updatable = false)
+    @Column(name = "character_id")
     public int getCharacterId() {
         return characterId;
     }
@@ -70,7 +70,7 @@ public class KingdomEntity {
     }
 
     @Basic
-    @Column(name = "location_id", insertable = false, updatable = false)
+    @Column(name = "location_id")
     public int getLocationId() {
         return locationId;
     }
@@ -80,7 +80,7 @@ public class KingdomEntity {
     }
 
     @Basic
-    @Column(name = "alliance_id", insertable = false, updatable = false)
+    @Column(name = "alliance_id")
     public Integer getAllianceId() {
         return allianceId;
     }
@@ -103,7 +103,7 @@ public class KingdomEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "character_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "character_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     public CharacterEntity getCharacterByCharacterId() {
         return characterByCharacterId;
     }
@@ -113,7 +113,7 @@ public class KingdomEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     public LocationEntity getLocationByLocationId() {
         return locationByLocationId;
     }
@@ -123,7 +123,7 @@ public class KingdomEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "alliance_id", referencedColumnName = "id")
+    @JoinColumn(name = "alliance_id", referencedColumnName = "id", insertable=false, updatable=false)
     public AllianceEntity getAllianceByAllianceId() {
         return allianceByAllianceId;
     }

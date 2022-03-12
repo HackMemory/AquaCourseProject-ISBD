@@ -20,7 +20,7 @@ public class DuelEntity {
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "duel_id_seq")
-    @SequenceGenerator(name = "duel_id_seq", sequenceName = "duel_id_seq")
+    @SequenceGenerator(name = "duel_id_seq", sequenceName = "duel_id_seq", allocationSize = 1)
     @Column(name = "id")
     public int getId() {
         return id;
@@ -31,7 +31,7 @@ public class DuelEntity {
     }
 
     @Basic
-    @Column(name = "attack_char_id", insertable = false, updatable = false)
+    @Column(name = "attack_char_id")
     public int getAttackCharId() {
         return attackCharId;
     }
@@ -41,7 +41,7 @@ public class DuelEntity {
     }
 
     @Basic
-    @Column(name = "defeat_char_id", insertable = false, updatable = false)
+    @Column(name = "defeat_char_id")
     public int getDefeatCharId() {
         return defeatCharId;
     }
@@ -51,7 +51,7 @@ public class DuelEntity {
     }
 
     @Basic
-    @Column(name = "location_id", insertable = false, updatable = false)
+    @Column(name = "location_id")
     public int getLocationId() {
         return locationId;
     }
@@ -84,7 +84,7 @@ public class DuelEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "attack_char_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "attack_char_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     public CharacterEntity getCharacterByAttackCharId() {
         return characterByAttackCharId;
     }
@@ -94,7 +94,7 @@ public class DuelEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "defeat_char_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "defeat_char_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     public CharacterEntity getCharacterByDefeatCharId() {
         return characterByDefeatCharId;
     }
@@ -104,7 +104,7 @@ public class DuelEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false, insertable=false, updatable=false)
     public LocationEntity getLocationByLocationId() {
         return locationByLocationId;
     }

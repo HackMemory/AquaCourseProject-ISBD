@@ -24,6 +24,8 @@ public class WarResultService {
         return repository.findById(id);
     }
 
+    public WarResultEntity findByWarId(Integer id){ return repository.findWarResultEntityByWarId(id); }
+
     public WarResultEntity save(WarResultEntity entity){
         return repository.save(entity);
     }

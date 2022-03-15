@@ -7,8 +7,10 @@ import ru.itmo.aquacourseproject.service.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MainController {
 
     private final MapService mapService;
@@ -97,6 +99,12 @@ public class MainController {
         return new ResponseDTO(false, "Not found");
     }
 
+    @GetMapping("/get/duelResultsByDuel/{id}")
+    public Object getDuelResByDuelId(@PathVariable("id") int id) {
+        DuelResultEntity entity = duelResultService.findByDuelId(id);
+        return mapService.convertDuelResultDTO(entity);
+    }
+
     @GetMapping("/get/duels")
     public List<DuelEntityDto> getDuels() {
         return mapService.getDuels();
@@ -127,6 +135,21 @@ public class MainController {
         return new ResponseDTO(false, "Not found");
     }
 
+    @GetMapping("/get/kingdomByCharId/{id}")
+    public Object getKingdomByCharId(@PathVariable("id") int id) {
+        try {
+            Optional<CharacterEntity> character = characterService.findById(id);
+            return character.map(characterEntity -> new ResponseDTO(true,
+                    kingdomService.findByCharId(characterEntity.getId())
+                            .stream()
+                            .map(mapService::convertKingdomDTO)
+                            .collect(Collectors.toList()))).orElseGet(() -> new ResponseDTO(false, "Not found"));
+
+        }catch (Exception e){
+            return new ResponseDTO(false, e.getMessage());
+        }
+    }
+
     @GetMapping("/get/locations")
     public List<LocationEntityDto> getLocations() {
         return mapService.getLocations();
@@ -155,6 +178,12 @@ public class MainController {
         }
 
         return new ResponseDTO(false, "Not found");
+    }
+
+    @GetMapping("/get/warResultsByWar/{id}")
+    public Object getWarResByWarId(@PathVariable("id") int id) {
+        WarResultEntity entity = warResultService.findByWarId(id);
+        return mapService.convertWarResultDTO(entity);
     }
 
     @GetMapping("/get/wars")
@@ -303,6 +332,61 @@ public class MainController {
         }catch (Exception e){
             return new ResponseDTO(false, e.getMessage());
         }
+    }
+
+    @GetMapping("/upgradeWeapon/{id}")
+    public WeaponEntityDto upgradeWeapon(@PathVariable("id") int id) {
+        characterService.upgradeWeapon(id);
+        return mapService.convertWeaponDTO(characterService.findById(id).get().getWeaponByWeaponId());
+    }
+
+    @GetMapping("/upgradeArmyByKingdom/{id}")
+    public KingdomEntityDto upgradeArmy(@PathVariable("id") int id) {
+        kingdomService.upgradeArmy(id);
+        return mapService.convertKingdomDTO(kingdomService.findById(id).get());
+    }
+
+    @PostMapping("/set/characterAlliance")
+    public ResponseDTO setCharacterAlliance(@RequestBody CharacterEntityDto entityDto){
+        try{
+            Optional<CharacterEntity> entity = characterService.findById(entityDto.getId());
+            if(entity.isPresent()){
+                List<KingdomEntity> kingdomList = kingdomService.findByCharId(entity.get().getId());
+                kingdomList.forEach(k -> k.setAllianceId(entityDto.getAllianceId()));
+
+                entity.get().setAllianceId(entityDto.getAllianceId());
+                return new ResponseDTO(true, mapService.convertCharacterDTO(characterService.save(entity.get())));
+            }
+
+            return new ResponseDTO(false, "Not Found");
+        }catch (Exception e){
+            return new ResponseDTO(false, e.getMessage());
+        }
+    }
+
+    @PostMapping("/changeKingdomsRuler")
+    public ResponseDTO changeKingdomsRuler(@RequestBody DuelEntityDto entityDto){
+        List<KingdomEntity> kingList = kingdomService.findByCharId(entityDto.getDefeatCharId());
+        Optional<CharacterEntity> character = characterService.findById(entityDto.getAttackCharId());
+        for(KingdomEntity king : kingList){
+            king.setAllianceId(character.get().getAllianceId());
+            king.setCharacterId(entityDto.getAttackCharId());
+            kingdomService.save(king);
+        }
+
+        return new ResponseDTO(true, "OK");
+    }
+
+    @PostMapping("/decreaseArmyStrength")
+    public ResponseDTO decreaseArmyStrength(@RequestBody DecreaseArmyDTO dto){
+        List<KingdomEntity> kingList = kingdomService.findByAllId(dto.getAllianceId());
+        kingList.forEach(k ->{
+            k.setArmyStrength(Math.round(k.getArmyStrength() * dto.getPercent()));
+            kingdomService.save(k);
+        });
+
+
+        return new ResponseDTO(true, "OK");
     }
 
 }

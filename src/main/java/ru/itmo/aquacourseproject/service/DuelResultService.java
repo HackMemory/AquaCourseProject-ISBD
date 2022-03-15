@@ -24,6 +24,8 @@ public class DuelResultService {
         return repository.findById(id);
     }
 
+    public DuelResultEntity findByDuelId(Integer id){ return repository.findDuelResultEntityByDuelId(id); }
+
     public DuelResultEntity save(DuelResultEntity entity){
         return repository.save(entity);
     }

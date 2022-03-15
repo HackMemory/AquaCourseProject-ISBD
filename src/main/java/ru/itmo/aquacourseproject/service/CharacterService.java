@@ -12,6 +12,8 @@ import java.util.Optional;
 public class CharacterService {
     private final CharacterEntityRepository repository;
 
+
+
     public CharacterService(CharacterEntityRepository repository) {
         this.repository = repository;
     }
@@ -23,6 +25,9 @@ public class CharacterService {
     public Optional<CharacterEntity> findById(Integer id){
         return repository.findById(id);
     }
+
+
+    public void upgradeWeapon(Integer charId){ repository.upgradeWeapon(charId); }
 
     public CharacterEntity save(CharacterEntity entity){
         return repository.save(entity);

@@ -92,7 +92,7 @@ public class MapService {
     }
 
    public DuelEntityDto convertDuelDTO(DuelEntity duel){
-        return new DuelEntityDto(duel.getId(), duel.getAttackCharId(), duel.getAttackCharId(), duel.getLocationId(), duel.getTime());
+        return new DuelEntityDto(duel.getId(), duel.getAttackCharId(), duel.getDefeatCharId(), duel.getLocationId(), duel.getTime());
     }
 
     public List<KingdomEntityDto> getKingdoms(){
